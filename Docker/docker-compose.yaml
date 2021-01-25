@@ -1,0 +1,18 @@
+version : '3'
+services :
+  springapp :
+    build : ../Docker
+    image : employee-compose-img
+    ports :
+      - "8082:8082"
+  dbapp :
+    image : mysql:latest
+    restart : always
+    environment :
+      MYSQL_DATABASE : 'MY_DB'
+      MYSQL_ROOT_PASSWORD : 'secret'
+    ports :
+      - "3308:3306"
+    volumes:
+      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+      - "./scripts/data.sql:/docker-entrypoint-initdb.d/2.sql"
