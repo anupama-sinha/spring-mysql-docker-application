@@ -1,6 +1,6 @@
 ## Getting Started
 * Creating Application JAR in Docker folder using maven plugin
-> mvn clean package
+> mvn clean install
 
 > cd Docker/
 * Creating Docker Image for Spring Boot App(When only Dockerfile, No docker-compose file)
@@ -19,8 +19,15 @@ b44d13800885   employee-compose-img   &quot;java -jar spring-my…&quot;   4 min
 > docker images
 * Checking Containers
 > docker ps -a
-* Entering inside MYSQL container to check Database & Tables
+* Entering inside MYSQL Workbench
 > docker exec -it 53a578923229 mysql -u root -p
+* Entering inside MYSQL folder structure
+> docker exec -it d70d63aa48ee /bin/bash
+
+> cd docker-entrypoint-initdb.d/
+
+> cat 1.sql
+
 * Entering inside Spring Boot App with SH Command Line of Alpine OS
 > docker exec -it 0f6115e44710 sh  
 * Checking MYSQL logs
@@ -58,6 +65,13 @@ b44d13800885   employee-compose-img   &quot;java -jar spring-my…&quot;   4 min
 * Use Hostname ID in below
 > mysqldump -h 1b772a9e2045 -u root -p --no-data employee > schema.sql
 
+## Points to Note
+* If Docker image name not mentioned in docker-compose, it creates imagename as docker-<spring-application-name>_1
+* Sometimes, DB Container starts before Spring App Container, thereby erroring out
+* Best practice to store Docker & Dockerfile is inside a folder located at base directory of project
+* Dockerfile execution line(ENTRYPOINT/CMD) depends on the type of OS of container
+
 ## References
+* https://github.com/iamvickyav/interview-preparation/blob/master/Docker%20%26%20Containerization/Docker/4-end-to-end-dockerization.md
 * https://stackoverflow.com/questions/49104733/docker-on-ubuntu-16-04-error-when-killing-container
 * https://stackoverflow.com/questions/29145370/how-can-i-initialize-a-mysql-database-with-schema-in-a-docker-container

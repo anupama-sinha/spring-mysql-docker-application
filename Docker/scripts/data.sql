@@ -1,3 +1,4 @@
 USE MY_DB;
-INSERT INTO employee VALUES(1,'Anupama');
-INSERT INTO employee VALUES(2,'Sinha');
+
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME) VALUES (1, 'Eckhart Tolle');
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME) VALUES (2, 'Dale Carnegie');

@@ -72,7 +72,7 @@
                         <fileset>
                             <directory>Docker</directory>
                             <includes>
-                                <include>**.*.jar</include>
+                                <include>**.jar</include>
                             </includes>
                         </fileset>
                      </filesets>

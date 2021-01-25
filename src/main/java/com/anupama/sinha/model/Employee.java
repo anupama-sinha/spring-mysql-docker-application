@@ -2,16 +2,24 @@ package com.anupama.sinha.model;
 
 import javax.persistence.*;
 
-@Entity(name = "EMPLOYEE")
+@Entity
 @Table(name = "EMPLOYEE")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "EMP_ID")
     private Integer id;
 
-    @Column(name = "NAME")
+    @Column(name = "EMP_NAME")
     String name;
+
+    public Employee(){
+
+    }
+
+    public Employee(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
