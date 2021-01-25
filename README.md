@@ -36,7 +36,9 @@ b44d13800885   employee-compose-img   &quot;java -jar spring-my…&quot;   4 min
 
 ## Stopping the Containers individually
 > docker container stop container-id
+
 > docker container rm container-id
+
 > docker container prune
 
 ## Stopping Containers at once for docker-compose
