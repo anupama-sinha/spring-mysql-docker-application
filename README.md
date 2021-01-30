@@ -70,7 +70,10 @@ b44d13800885   employee-compose-img   &quot;java -jar spring-my…&quot;   4 min
 * Sometimes, DB Container starts before Spring App Container, thereby erroring out
 * Best practice to store Docker & Dockerfile is inside a folder located at base directory of project
 * Dockerfile execution line(ENTRYPOINT/CMD) depends on the type of OS of container
-
+* If docker-compose is edited while containers are up and running then, there is some disconnect because of which we can't bring the container down as default-network has active endpoints. So better way is to disconnect the network first, and then bring it down
+  > docker network inspect <network>
+  > docker network disconnect -f <network> <container id for the endpoint>
+  
 ## References
 * https://github.com/iamvickyav/interview-preparation/blob/master/Docker%20%26%20Containerization/Docker/4-end-to-end-dockerization.md
 * https://stackoverflow.com/questions/49104733/docker-on-ubuntu-16-04-error-when-killing-container
